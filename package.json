@@ -1,0 +1,27 @@
+{
+  "name": "twitter-feed",
+  "version": "1.0.0",
+  "description": "A Twitter Feed builder for emails",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "DesignyourCode",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "gulp": "^3.8.11",
+    "jade": "^1.11.0",
+    "twitter": "^1.2.5",
+    "webshot": "^0.16.0"
+  },
+  "devDependencies": {
+    "gulp-livereload": "^3.8.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-watch": "^4.1.1",
+    "node-env-file": "^0.1.8"
+  }
+}
