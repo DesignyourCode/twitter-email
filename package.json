@@ -22,6 +22,6 @@
     "gulp-livereload": "^3.8.0",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.1.0",
-    "gulp-watch": "^4.1.1",
+    "gulp-watch": "^4.1.1"
   }
 }
