@@ -51,6 +51,12 @@ app.get('/:username', function (req, res) {
 	var url = req.protocol + "://" + req.get('host') + '/output/' + username;
 
 	// Screenshot
+	var options = {
+	// 	phantomPath: path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
+		defaultWhiteBackground: true,
+		streamType: 'png'
+	};
+
 	webshot(url, function(err, renderStream) {
 		renderStream.pipe(res);
 	});
