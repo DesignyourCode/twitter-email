@@ -11,8 +11,6 @@ var client = new Twitter({
 	access_token_secret: process.env.ACCESS_SECRET
 });
 
-console.log(process.env['CONSUMER_KEY']);
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.static('public'));
