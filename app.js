@@ -58,5 +58,5 @@ app.get('/:username', function (req, res) {
 });
 
 // Set server port
-app.listen(4000);
+app.listen(process.env.PORT);
 console.log('server is running');
