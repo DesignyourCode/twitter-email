@@ -1,8 +1,8 @@
-var express = require('express');
-var app = express();
-var path = require('path');
-var Twitter = require('twitter');
-var webshot = require('webshot');
+var express = require('express'),
+	app = express(),
+	path = require('path'),
+	Twitter = require('twitter'),
+	webshot = require('webshot');
 
 var client = new Twitter({
 	consumer_key: process.env.CONSUMER_KEY,
@@ -26,10 +26,10 @@ app.get('/', function (req, res) {
 
 // Build feed
 app.get('/output/:username', function (req, res) {
-	var username = req.params.username;
-	var url = req.protocol + "://" + req.get('host') + req.originalUrl;
+	var url = req.protocol + "://" + req.get('host') + req.originalUrl,
+		username = req.params.username,
+		params = {screen_name: username};
 
-	var params = {screen_name: username};
 	client.get('statuses/user_timeline', params, function(error, tweets, response){
 	 	if (!error) {
 		  	res.render('feed', {
@@ -38,12 +38,11 @@ app.get('/output/:username', function (req, res) {
 		  	});
 		}
 	});
-
 });
 
 app.get('/:username', function (req, res) {
-	var username = req.params.username;
-	var url = req.protocol + "://" + req.get('host') + '/output/' + username;
+	var username = req.params.username,
+		url = req.protocol + "://" + req.get('host') + '/output/' + username;
 
 	// Screenshot
 	var options = {
