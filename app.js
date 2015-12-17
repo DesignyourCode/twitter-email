@@ -4,11 +4,6 @@ var path = require('path');
 var Twitter = require('twitter');
 var webshot = require('webshot');
 
-var assert = require('assert');
-var env = require('node-env-file');
-
-env('.env');
-
 var client = new Twitter({
 	consumer_key: process.env.CONSUMER_KEY,
 	consumer_secret: process.env.CONSUMER_SECRET,
@@ -16,7 +11,7 @@ var client = new Twitter({
 	access_token_secret: process.env.ACCESS_SECRET
 });
 
-console.log(process.env.CONSUMER_KEY);
+console.log(process.env['CONSUMER_KEY']);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
