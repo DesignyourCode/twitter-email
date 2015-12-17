@@ -47,7 +47,6 @@ app.get('/:username', function (req, res) {
 
 	// Screenshot
 	var options = {
-	// 	phantomPath: path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
 		defaultWhiteBackground: true,
 		streamType: 'png'
 	};
@@ -56,6 +55,8 @@ app.get('/:username', function (req, res) {
 		renderStream.pipe(res);
 	});
 });
+
+// add comment
 
 // Set server port
 app.listen(process.env.PORT);
