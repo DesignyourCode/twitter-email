@@ -3,7 +3,7 @@
 {% block title %}Feed{% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="styles/feed.css" />
+	<link rel="stylesheet" href="../styles/feed.css" />
 {% endblock %}
 
 {% block content %}

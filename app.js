@@ -17,7 +17,7 @@ var env = nunjucks.configure('views', {
     express: app
 });
 
-app.use(express.static(__dirname + './assets'));
+app.use(express.static(__dirname + '/assets'));
 
 // Creating home page
 app.get('/', function (req, res) {
