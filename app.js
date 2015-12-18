@@ -2,7 +2,8 @@ var express = require('express'),
 	app = express(),
 	path = require('path'),
 	Twitter = require('twitter'),
-	webshot = require('webshot');
+	webshot = require('webshot'),
+	nunjucks = require('nunjucks');
 
 var client = new Twitter({
 	consumer_key: process.env.CONSUMER_KEY,
@@ -11,9 +12,12 @@ var client = new Twitter({
 	access_token_secret: process.env.ACCESS_SECRET
 });
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use(express.static('public'));
+var env = nunjucks.configure('views', {
+    autoescape: true,
+    express: app
+});
+
+app.use(express.static(__dirname + '/assets'));
 
 // Creating home page
 app.get('/', function (req, res) {
@@ -23,7 +27,7 @@ app.get('/', function (req, res) {
 
 	client.get('statuses/user_timeline', params, function(error, tweets, response){
 	 	if (!error) {
-		  	res.render('index', {
+		  	res.render('index.html.nunjs', {
 				current_url : current_url,
 		  		tweets		: tweets,
 		  		username	: username
@@ -40,7 +44,7 @@ app.get('/output/:username', function (req, res) {
 
 	client.get('statuses/user_timeline', params, function(error, tweets, response){
 	 	if (!error) {
-		  	res.render('feed', {
+		  	res.render('feed.html.nunjs', {
 		  		tweets	 : tweets,
 		  		username : username
 		  	});
@@ -61,6 +65,44 @@ app.get('/:username', function (req, res) {
 	webshot(url, function(err, renderStream) {
 		renderStream.pipe(res);
 	});
+});
+
+app.get('/:username', function (req, res) {
+	var username = req.params.username,
+		url = req.protocol + "://" + req.get('host') + '/output/' + username;
+
+	// Screenshot
+	var options = {
+		defaultWhiteBackground: true,
+		streamType: 'png'
+	};
+
+	webshot(url, function(err, renderStream) {
+		renderStream.pipe(res);
+	});
+});
+
+// Custom filters
+env.addFilter('limitTo', function(input, limit){
+	if(typeof limit !== 'number'){
+		return input;
+	}
+	if(typeof input === 'string'){
+		if(limit >= 0){
+			return input.substring(0, limit);
+		} else {
+			return input.substr(limit);
+		}
+	}
+	if(Array.isArray(input)){
+		limit = Math.min(limit, input.length);
+		if(limit >= 0){
+			return input.splice(0, limit);
+		} else {
+			return input.splice(input.length + limit, input.length);
+		}
+	}
+	return input;
 });
 
 // Set server port

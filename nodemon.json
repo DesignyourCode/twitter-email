@@ -1,0 +1,5 @@
+{
+    "nodeArgs": [],
+	"ext": "html js nunjs",
+	"ignore": ["assets/*"]
+}

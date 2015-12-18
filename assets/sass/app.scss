@@ -4,6 +4,10 @@ $primary: #28A9E0;
 // #69c3e9
 $white: #ffffff;
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	background: $primary;
 	text-align: center;
@@ -51,8 +55,16 @@ main {
 
 section {
 	.col {
+		padding: 20px;
 		float: left;
-		width: 30%;
+		width: 33%;
+
+		figure {
+			border-radius: 100%;
+		    display: inline-block;
+		    margin: 0;
+			overflow: hidden;
+		}
 	}
 }
 

@@ -1,12 +1,14 @@
 {
   "name": "twitter-feed",
   "version": "1.0.0",
-  "description": "A Twitter Feed builder for emails",
-  "main": "app.js",
-  "private": true,
+  "description": "A Twitter Feed image generatro for emails",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "sass --watch assets/sass:assets/styles | env $(cat .env) nodemon app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DesignyourCode/twitter-feed.git"
   },
   "author": "DesignyourCode",
   "license": "MIT",
@@ -15,12 +17,7 @@
     "gulp": "^3.8.11",
     "jade": "^1.11.0",
     "twitter": "^1.2.5",
-    "webshot": "^0.16.0"
-  },
-  "devDependencies": {
-    "gulp-livereload": "^3.8.0",
-    "gulp-notify": "^2.2.0",
-    "gulp-sass": "^2.1.0",
-    "gulp-watch": "^4.1.1"
+    "webshot": "^0.16.0",
+    "nunjucks": "^2.2.0"
   }
 }

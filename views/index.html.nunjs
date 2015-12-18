@@ -1,0 +1,29 @@
+{% extends "base.html.nunjs" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+	<main>
+		<i class="fa fa-twitter animate"></i>
+
+		<div class="intro">
+			<h1>Welcome to the Twitter Feed Image Generator</h1>
+			<h2>Please make sure you are including a username in the URL.</h2>
+
+			<p class="example">Example: <a href="{{ current_url }}/{{ username }}">{{ current_url }}/<strong>{{ username }}</strong></a></p>
+		</div>
+
+		<section>
+			{% for tweet in tweets|limitTo(3) %}
+				<div class="col">
+					<figure>
+						<img src="{{ tweet.user.profile_image_url }}" />
+					</figure>
+
+					<p><a href="http://twitter.com/{{ username }}" target="_blank">@{{ tweet.user.name }}</a></p>
+					<p><strong>{{ tweet.text }}</strong></p>
+				</div>
+			{% endfor %}
+		</section>
+	</main>
+{% endblock %}
