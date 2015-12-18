@@ -18,13 +18,15 @@ app.use(express.static('public'));
 // Creating home page
 app.get('/', function (req, res) {
 	var current_url = req.protocol + '://' + req.get('host'),
-		params = {screen_name: 'designyourcode'};
+		username = 'designyourcode',
+		params = {screen_name: username};
 
 	client.get('statuses/user_timeline', params, function(error, tweets, response){
 	 	if (!error) {
 		  	res.render('index', {
-				current_url: current_url,
-		  		tweets: tweets
+				current_url : current_url,
+		  		tweets		: tweets,
+		  		username	: username
 		  	});
 		}
 	});
@@ -39,8 +41,8 @@ app.get('/output/:username', function (req, res) {
 	client.get('statuses/user_timeline', params, function(error, tweets, response){
 	 	if (!error) {
 		  	res.render('feed', {
-		  		tweets: tweets,
-		  		username: username
+		  		tweets	 : tweets,
+		  		username : username
 		  	});
 		}
 	});

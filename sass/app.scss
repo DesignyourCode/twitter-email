@@ -1,11 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Slabo+27px);
 
-$primary: green;
+$primary: #28A9E0;
+// #69c3e9
 $white: #ffffff;
 
 body {
-	background: #28A9E0;
+	background: $primary;
 	text-align: center;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
 }
 
 main {
@@ -33,6 +39,15 @@ main {
 	}
 }
 
+.example {
+	background: lighten($primary, 10%);
+	display: inline-block;
+	font-size: 20px;
+	line-height: 26px;
+	margin: 0 0 40px;
+	padding: 10px 20px;
+	border-radius: 100px;
+}
 
 section {
 	.col {
