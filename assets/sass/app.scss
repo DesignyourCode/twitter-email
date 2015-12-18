@@ -11,6 +11,7 @@ $white: #ffffff;
 body {
 	background: $primary;
 	text-align: center;
+	overflow-x: hidden;
 }
 
 a {
@@ -33,13 +34,11 @@ main {
 		font-size: 36px;
 		font-weight: 100;
 		line-height: 40px;
-		// text-shadow: 1px 1px 4px #10526e;
 	}
 
 	h2 {
 		color: $white;
 		font-family: 'Slabo 27px', serif;
-		// text-shadow: 1px 1px 4px #10526e;
 	}
 }
 
@@ -51,6 +50,13 @@ main {
 	margin: 0 0 40px;
 	padding: 10px 20px;
 	border-radius: 100px;
+
+	@media screen and (max-width: 500px) {
+		font-size: 18px;
+		line-height: 22px;
+		padding: 10px;
+		border-radius: 10px;
+	}
 }
 
 section {
@@ -58,6 +64,12 @@ section {
 		padding: 20px;
 		float: left;
 		width: 33%;
+
+		@media screen and (max-width: 500px) {
+			float: none;
+			margin: 0 auto;
+			width: 90%;
+		}
 
 		figure {
 			border-radius: 100%;
@@ -72,7 +84,7 @@ section {
 	color: $white;
 
 	&.animate {
-		position: fixed;
+		position: absolute;
 		left: 50%;
 		top: 40px;
 		transform: translate(-40%, -25%);
