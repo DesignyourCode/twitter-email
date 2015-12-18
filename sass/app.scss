@@ -1,5 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Slabo+27px);
+
 $primary: green;
+$white: #ffffff;
 
 body {
 	background: #28A9E0;
+	text-align: center;
+}
+
+main {
+	margin: 0 auto;
+	max-width: 1200px;
+	width: 90%;
+}
+
+.intro {
+	margin-top: 100px;
+	
+	h1 {
+		color: $white;
+		font-family: 'Slabo 27px', serif;
+		font-size: 36px;
+		font-weight: 100;
+		line-height: 40px;
+		// text-shadow: 1px 1px 4px #10526e;
+	}
+
+	h2 {
+		color: $white;
+		font-family: 'Slabo 27px', serif;
+		// text-shadow: 1px 1px 4px #10526e;
+	}
+}
+
+
+section {
+	.col {
+		float: left;
+		width: 30%;
+	}
+}
+
+.fa-twitter {
+	color: $white;
+
+	&.animate {
+		position: fixed;
+		left: 50%;
+		top: 40px;
+		transform: translate(-40%, -25%);
+		font-size: 12000px;
+		animation: size .3s ease-in-out forwards;
+	}
+}
+
+@keyframes size {
+    0% {
+    	font-size: 12000px;
+    }
+    100% {
+    	font-size: 60px;	
+    }
 }

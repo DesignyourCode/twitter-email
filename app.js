@@ -17,10 +17,16 @@ app.use(express.static('public'));
 
 // Creating home page
 app.get('/', function (req, res) {
-	var current_url = req.protocol + '://' + req.get('host');
+	var current_url = req.protocol + '://' + req.get('host'),
+		params = {screen_name: 'designyourcode'};
 
-	res.render('index', {
-		current_url: current_url
+	client.get('statuses/user_timeline', params, function(error, tweets, response){
+	 	if (!error) {
+		  	res.render('index', {
+				current_url: current_url,
+		  		tweets: tweets
+		  	});
+		}
 	});
 });
 

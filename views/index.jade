@@ -4,11 +4,31 @@ block title
 	title Homepage
 
 block stylesheets
+	link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
 	link(rel='stylesheet', type='text/css', href='../stylesheets/app.css')
 
 block content
-	h1 Please make sure you are including a username in the URL.
-	
-	p Example: 
-		a(href="#{current_url}/designyourcode") #{current_url}/
-			strong designyourcode
+	main
+		i.fa.fa-twitter.animate
+		
+		.intro
+			h1 Welcome to the Twitter Feed Image Generator
+			
+			h2 Please make sure you are including a username in the URL.
+		
+			p Example: 
+				a(href="#{current_url}/designyourcode") #{current_url}/
+					strong designyourcode
+
+		section
+			- var count = 0;
+			each tweet in tweets
+				if count < 3
+					.col
+						img(src='#{tweet.user.profile_image_url}')
+						p
+							a(href="http://twitter.com/#{username}", target="_blank") @#{tweet.user.name}
+						
+						p
+							strong #{tweet.text}
+				- count++;
