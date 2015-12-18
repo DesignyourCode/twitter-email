@@ -18,4 +18,4 @@ This may help: `chmod u+x .env`
 
 Start server for project:
 
-`source ./.env; node app.js`
+`npm start`
