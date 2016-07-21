@@ -1,5 +1,6 @@
-Setting up project
-==================
+# Setting up project
+
+## WORK IN PROGRESS
 
 Start by copying .env.dist and renaming to .env
 
@@ -8,9 +9,7 @@ Next generate the tokens and add them to the .env file.
 
 Run 'npm install' to install all node dependencies.
 
-
-To run project
---------------
+## Setup
 
 Make sure .env file has correct permissions: `-rwxr--r--`
 
